@@ -1,8 +1,10 @@
+<!-- 使用时将所有 {{date}} 替换为今天的日期（格式：YYYY-MM-DD） -->
 ---
 title: 「在此填写标题」
 created: {{date}}
 updated: {{date}}
 confidence: unverified
+ttl: 180d  # AI竞品建议90d，方法论建议365d，不填默认180d
 tags: []
 sources: []
 related: []

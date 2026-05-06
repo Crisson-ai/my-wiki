@@ -1,4 +1,54 @@
+# ── 系统文件 ──────────────────────────────────────────
 .DS_Store
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .trash/
+.claude/
+
+# ── 知识内容文件（不上传到公开仓库）────────────────────
+
+# _inbox：只保留 README，排除所有实际笔记
+_inbox/*
+!_inbox/README.md
+!_inbox/.gitkeep
+
+# _raw：只保留 README，排除所有原始素材
+_raw/articles/*
+_raw/papers/*
+_raw/threads/*
+_raw/meetings/*
+_raw/images/*
+_raw/clippings/*
+!_raw/articles/.gitkeep
+!_raw/papers/.gitkeep
+!_raw/threads/.gitkeep
+!_raw/meetings/.gitkeep
+!_raw/images/.gitkeep
+!_raw/clippings/.gitkeep
+
+# wiki：排除所有知识页面（保留目录结构）
+wiki/**/*.md
+wiki/**/*.html
+wiki/**/*.puml
+wiki/**/*.jpg
+wiki/**/*.jpeg
+wiki/**/*.png
+!wiki/_index.md.example
+
+# log：操作日志不上传
+log/*.md
+!log/.gitkeep
+
+# outputs：生成物不上传，只保留工具脚本
+outputs/reports/*
+outputs/slides/*.html
+outputs/slides/*.pptx
+outputs/slides/*.png
+!outputs/reports/.gitkeep
+!outputs/slides/.gitkeep
+!outputs/slides/gen_ppt.js
+
+# audit：反馈文件不上传
+audit/*.md
+audit/resolved/
+!audit/.gitkeep

@@ -10,3 +10,4 @@
 - `papers/` — 学术论文、研究报告
 - `clippings/` — 摘抄、截图 OCR、语音转录
 - `threads/` — 社交媒体讨论串、推文
+- `meetings/` — 会议纪要、录音转录

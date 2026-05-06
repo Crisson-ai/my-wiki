@@ -32,7 +32,7 @@ my_wiki/
 │   ├── slides/            ← 幻灯片
 │   ├── reports/           ← 报告
 │   └── drafts/            ← 草稿
-├── 辩论赛/                ← 📌 你的现有项目（保留）
+├── skills/                ← 🔧 SKILL 插件：所有 AI Agent 扩展能力统一存放于此
 ├── templates/             ← 📋 模板：Wiki 页面和 prompt 的模板
 └── .llm-wiki.md           ← ⚙️ LLM 编译指令（核心配置）
 ```
