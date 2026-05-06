@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      data-theme="aurora"
+      data-themes="aurora,tokyo-night,catppuccin-mocha,dracula,glassmorphism,nord,pitch-deck-vc,corporate-clean,minimal-white,neo-brutalism"
+      data-theme-base="../../skills/html-ppt-skill/assets/themes/">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Wiki · 让知识自我生长</title>
+<link rel="stylesheet" href="../../skills/html-ppt-skill/assets/fonts.css">
+<link rel="stylesheet" href="../../skills/html-ppt-skill/assets/base.css">
+<link rel="stylesheet" id="theme-link" href="../../skills/html-ppt-skill/assets/themes/aurora.css">
+<link rel="stylesheet" href="../../skills/html-ppt-skill/assets/animations/animations.css">
+<style>
+/* ── 补充组件（base.css 未定义） ── */
+.slide { padding: 64px 96px }
+
+/* 对比表格行 */
+.cmp { width:100%; border-collapse:collapse; font-size:15px; margin-top:8px }
+.cmp thead tr { border-bottom:2px solid var(--border-strong) }
+.cmp th { padding:10px 16px; text-align:left; font-size:11px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--text-3) }
+.cmp td { padding:12px 16px; border-bottom:1px solid var(--border); color:var(--text-2);
+  vertical-align:middle; line-height:1.4 }
+.cmp td:first-child { font-weight:700; color:var(--text-1) }
+.ok { color:var(--good)!important }
+.no { color:var(--bad)!important }
+.hi { color:var(--accent)!important; font-weight:700!important }
+
+/* Callout */
+.callout { border-left:3px solid var(--accent-2); padding:14px 20px;
+  background:var(--surface-2); border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  font-size:16px; line-height:1.65; color:var(--text-1) }
+
+/* 编号大字 */
+.num-big { font-size:40px; font-weight:900; line-height:1;
+  background:var(--grad); -webkit-background-clip:text;
+  background-clip:text; -webkit-text-fill-color:transparent }
+
+/* 四步流程 */
+.flow { display:grid; grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr;
+  gap:10px; align-items:stretch; margin-top:24px }
+.flow-node { background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius-sm); padding:18px 16px; display:flex;
+  flex-direction:column; gap:6px }
+.flow-node .step-label { font-size:10px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:4px }
+.flow-node h4 { font-size:16px; font-weight:700; color:var(--text-1); margin:0 }
+.flow-node p { font-size:12px; color:var(--text-3); line-height:1.5; margin:0 }
+.flow-node.hi-node { border-color:color-mix(in srgb,var(--accent) 40%,transparent);
+  background:color-mix(in srgb,var(--accent) 8%,var(--surface)) }
+.flow-arr { display:flex; align-items:center; justify-content:center;
+  color:var(--accent-2); font-size:22px; font-weight:700 }
+
+/* 迭代卡片 v标签 */
+.v-tag { display:inline-block; padding:3px 12px; border-radius:999px;
+  font-size:13px; font-weight:800; background:var(--grad);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; border:1px solid var(--border-strong) }
+
+/* Roadmap 状态标签 */
+.status { display:inline-flex; align-items:center; padding:3px 10px;
+  border-radius:6px; font-size:11px; font-weight:700; letter-spacing:.06em;
+  margin-bottom:8px }
+.s-now { background:color-mix(in srgb,var(--good) 15%,transparent); color:var(--good) }
+.s-plan { background:color-mix(in srgb,var(--accent-2) 15%,transparent); color:var(--accent-2) }
+.s-explore { background:color-mix(in srgb,var(--warn) 15%,transparent); color:var(--warn) }
+
+/* 底部导航 */
+.deck-footer { position:absolute; bottom:28px; left:96px; right:96px;
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:12px; color:var(--text-3); z-index:10; pointer-events:none }
+
+/* 结语大字 */
+.mega { font-size:84px; font-weight:900; line-height:1; letter-spacing:-.035em;
+  background:var(--grad); -webkit-background-clip:text; background-clip:text;
+  color:transparent }
+
+/* 旅程步骤行 */
+.journey { display:flex; margin-top:32px; border:1px solid var(--border);
+  border-radius:var(--radius); overflow:hidden }
+.j-item { flex:1; text-align:center; padding:18px 10px;
+  border-right:1px solid var(--border); background:var(--surface) }
+.j-item:last-child { border-right:none }
+.j-item .ico { font-size:26px; margin-bottom:6px }
+.j-item .lbl { font-size:11px; color:var(--text-3); font-weight:600;
+  letter-spacing:.07em; text-transform:uppercase }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ① 封面 -->
+<section class="slide is-active" data-title="初衷"
+         style="justify-content:flex-end;padding-bottom:88px">
+  <div>
+    <p class="kicker" style="margin-bottom:14px">PRODUCT STORY · MY WIKI · 2026</p>
+    <h1 class="h1" style="max-width:16ch">
+      让知识<br><span class="gradient-text">自我生长</span>
+    </h1>
+    <p class="lede mt-m" style="max-width:54ch">
+      想把老师的课堂知识、大家分享的优秀内容沉淀下来，真正为我所用。
+    </p>
+    <div class="row wrap mt-l" style="gap:10px">
+      <span class="pill pill-accent">痛点驱动</span>
+      <span class="pill">竞品研究</span>
+      <span class="pill">MVP 迭代</span>
+      <span class="pill">LLM 驱动</span>
+    </div>
+  </div>
+  <div class="deck-footer">
+    <span>My Wiki</span>
+    <span class="slide-number" data-current="1" data-total="10"></span>
+  </div>
+  <div class="notes">这不是工具介绍，是一段产品思考的全过程。接下来，我将从产品思维的角度分享这套知识库的建设全过程。</div>
+</section>
+
+<!-- ② 痛点发现 -->
+<section class="slide" data-title="痛点发现">
+  <p class="eyebrow">PROBLEM · 痛点发现</p>
+  <h2 class="h2 mt-s">工具换了一个又一个，<br>知识还是<span class="gradient-text">一盘散沙</span></h2>
+  <div class="grid g3 mt-l" style="flex:1;align-items:stretch">
+    <div class="card card-accent" style="border-top-color:var(--accent-3)">
+      <p class="eyebrow" style="color:var(--accent-3);margin-bottom:10px">痛点 1</p>
+      <h4 class="h4">只收不用</h4>
+      <p class="dim" style="font-size:15px;line-height:1.65;margin-top:8px">老师的课堂内容、大家分享的优质知识收了一大堆，却从来不回头看。收藏的那一刻就是被遗忘的开始。</p>
+    </div>
+    <div class="card card-accent" style="border-top-color:var(--bad)">
+      <p class="eyebrow" style="color:var(--bad);margin-bottom:10px">痛点 2</p>
+      <h4 class="h4">信息孤岛</h4>
+      <p class="dim" style="font-size:15px;line-height:1.65;margin-top:8px">笔记各自为政，想法之间没有连接。知识越积越多，越来越找不到。</p>
+    </div>
+    <div class="card card-accent" style="border-top-color:var(--warn)">
+      <p class="eyebrow" style="color:var(--warn);margin-bottom:10px">痛点 3</p>
+      <h4 class="h4">维护负担</h4>
+      <p class="dim" style="font-size:15px;line-height:1.65;margin-top:8px">分类、打标签、定期整理……维护笔记本身就耗尽精力，知识库最终烂尾。</p>
+    </div>
+  </div>
+  <div class="callout mt-l">
+    核心问题：<b>知识管理的维护成本随信息量线性增长</b>——这是人力无法逾越的天花板。
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="2" data-total="10"></span></div>
+  <div class="notes">不是工具不好，是"人来维护知识"这件事本身就有天花板。</div>
+</section>
+
+<!-- ③ 竞品研究 -->
+<section class="slide" data-title="竞品研究">
+  <p class="eyebrow">COMPETITIVE RESEARCH · 竞品研究</p>
+  <h2 class="h2 mt-s">市面上的解法，<br>各有<span class="gradient-text">致命短板</span></h2>
+  <div style="margin-top:16px">
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th style="width:16%">维度</th>
+          <th style="width:30%">飞书文档 / Notion</th>
+          <th style="width:30%">Google NotebookLM</th>
+          <th style="width:24%">我的需求</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI 整理</td>
+          <td class="no">✗ 无，全靠人工</td>
+          <td class="ok">✓ 自动摘要、问答</td>
+          <td class="hi">✓ 必须有</td>
+        </tr>
+        <tr>
+          <td>跨库串联</td>
+          <td class="no">✗ 知识碎片化</td>
+          <td class="no">✗ 知识库彼此孤立</td>
+          <td class="hi">✓ 核心需求</td>
+        </tr>
+        <tr>
+          <td>容量限制</td>
+          <td style="color:var(--text-3)">— 有上限</td>
+          <td class="no">✗ 每个 Notebook 有上限</td>
+          <td class="hi">✓ 无限制</td>
+        </tr>
+        <tr>
+          <td>本地化</td>
+          <td style="color:var(--text-3)">— 云端</td>
+          <td class="no">✗ 纯云端，数据不自主</td>
+          <td class="hi">✓ 本地优先</td>
+        </tr>
+        <tr style="border-bottom:none">
+          <td>知识自更新</td>
+          <td class="no">✗ 静态文档</td>
+          <td class="no">✗ 上传即固定</td>
+          <td class="hi">✓ 增量编译</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout mt-l">
+      共同盲点：<b>知识库是孤立的容器</b>——不同领域的知识无法真正串联，而真实的思维从来不是这样工作的。
+    </div>
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="3" data-total="10"></span></div>
+  <div class="notes">NotebookLM 最接近，但跨库孤立和容量限制是根本性缺陷。</div>
+</section>
+
+<!-- ④ 关键洞察 -->
+<section class="slide" data-title="关键洞察">
+  <p class="eyebrow">KEY INSIGHT · 2026-04-02</p>
+  <h2 class="h2 mt-s">Karpathy 的一条推文，<br>让我看到了<span class="gradient-text">第三条路</span></h2>
+  <div class="card mt-l" style="padding:26px 32px;border-color:var(--border-strong)">
+    <p class="dim2" style="font-size:12px;margin-bottom:12px">@karpathy · April 2, 2026</p>
+    <p style="font-size:20px;line-height:1.7;color:var(--text-1);font-style:italic">
+      "Using LLMs to build personal knowledge bases… a large fraction of my recent token throughput is going less into manipulating code, and more into <b style="color:var(--accent)">manipulating knowledge</b>."
+    </p>
+  </div>
+  <div class="grid g2 mt-l">
+    <div class="card card-accent">
+      <p class="eyebrow" style="margin-bottom:10px">洞见 1</p>
+      <h4 class="h4">知识库能<span class="gradient-text">自我更新</span></h4>
+      <p class="dim" style="font-size:15px;line-height:1.6;margin-top:8px">LLM 充当编译器，新素材自动合并进已有体系。知识库是活的，不是静态文档。</p>
+    </div>
+    <div class="card card-accent" style="border-top-color:var(--accent-2)">
+      <p class="eyebrow" style="color:var(--accent-2);margin-bottom:10px">洞见 2</p>
+      <h4 class="h4">知识能<span class="gradient-text">互相连接</span></h4>
+      <p class="dim" style="font-size:15px;line-height:1.6;margin-top:8px">AI 维护跨主题双向链接，不同领域的知识自由串联，形成真正的知识图谱。</p>
+    </div>
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="4" data-total="10"></span></div>
+  <div class="notes">决定：结合本地 Obsidian，自建一套不依赖云端的个人知识图谱。</div>
+</section>
+
+<!-- ⑤ 产品定义 -->
+<section class="slide" data-title="产品定义">
+  <p class="eyebrow">PRODUCT DEFINITION · 产品定义</p>
+  <h2 class="h2 mt-s">从痛点和竞品中，<br>提炼出<span class="gradient-text">三条核心需求</span></h2>
+  <div class="grid g3 mt-l" style="align-items:stretch">
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start">
+      <span class="num-big">01</span>
+      <div>
+        <h4 class="h4">跨主题串联，没有孤岛</h4>
+        <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">解决飞书 / Notion 碎片化，以及 NotebookLM 知识库孤立的问题。</p>
+      </div>
+    </div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start">
+      <span class="num-big">02</span>
+      <div>
+        <h4 class="h4">AI 维护，人只做方向决策</h4>
+        <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">解决维护成本天花板，把所有重复性整理工作完全交给 AI。</p>
+      </div>
+    </div>
+    <div class="card" style="display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start">
+      <span class="num-big">03</span>
+      <div>
+        <h4 class="h4">本地化，数据自主，无上限</h4>
+        <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">解决 NotebookLM 云端依赖和容量限制，结合 Obsidian 本地自建。</p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="5" data-total="10"></span></div>
+  <div class="notes">三条需求直接对应痛点和竞品分析，有逻辑推导，不是拍脑袋定的。</div>
+</section>
+
+<!-- ⑥ MVP 架构 -->
+<section class="slide" data-title="MVP 架构">
+  <p class="eyebrow">MVP · v1 架构设计</p>
+  <h2 class="h2 mt-s">第一版：<span class="gradient-text">四段流水线</span></h2>
+  <div class="flow">
+    <div class="flow-node">
+      <span class="step-label">Step 1</span>
+      <h4>📥 _inbox/</h4>
+      <p>随手投入原始素材，不需要整理分类。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node hi-node">
+      <span class="step-label">Step 2</span>
+      <h4>🤖 LLM 编译器</h4>
+      <p>Claude Code 自动分类、提取洞察、建立双向链接。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <span class="step-label">Step 3</span>
+      <h4>📖 wiki/</h4>
+      <p>结构化知识图谱，带双向链接，Obsidian 本地查看。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <span class="step-label">Step 4</span>
+      <h4>📤 outputs/</h4>
+      <p>报告、PPT、分析文档一键生成。</p>
+    </div>
+  </div>
+  <div class="grid g3 mt-l">
+    <div class="card card-soft">
+      <p class="eyebrow" style="margin-bottom:6px">📦 _raw/</p>
+      <p class="dim" style="font-size:14px;line-height:1.5">原始素材只读归档，AI 不修改源文件</p>
+    </div>
+    <div class="card card-soft">
+      <p class="eyebrow" style="margin-bottom:6px">⚙️ .llm-wiki.md</p>
+      <p class="dim" style="font-size:14px;line-height:1.5">AI 操作手册：9 条指令，定义编译、检查、问答行为</p>
+    </div>
+    <div class="card card-soft">
+      <p class="eyebrow" style="margin-bottom:6px">🔗 Obsidian + Git</p>
+      <p class="dim" style="font-size:14px;line-height:1.5">本地查看 · 手动编辑 · 版本追踪，数据完全自主</p>
+    </div>
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="6" data-total="10"></span></div>
+  <div class="notes">最小架构满足三条核心需求：LLM 解决维护、wiki/ 解决串联、Obsidian 解决本地化。</div>
+</section>
+
+<!-- ⑦ 迭代历程 -->
+<section class="slide" data-title="迭代历程">
+  <p class="eyebrow">ITERATIONS · 迭代历程</p>
+  <h2 class="h2 mt-s">MVP 之后，架构经历了<span class="gradient-text">四次进化</span></h2>
+  <div class="grid g2 mt-l" style="align-items:stretch">
+    <div class="card" style="display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start">
+      <span class="v-tag">v1</span>
+      <div>
+        <h4 class="h4">基础骨架 — 线性流水线</h4>
+        <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">建立核心目录，跑通「投入 → 编译 → 输出」基本流程。</p>
+      </div>
+    </div>
+    <div class="card" style="display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start">
+      <span class="v-tag">v2</span>
+      <div>
+        <h4 class="h4">wiki/ 目录分级</h4>
+        <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">平铺 → 「领域 / 项目」两级，不同项目物理隔离，知识不再混杂。</p>
+      </div>
+    </div>
+    <div class="card" style="display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start">
+      <span class="v-tag">v3</span>
+      <div>
+        <h4 class="h4">引入 Audit + Log — 反馈闭环</h4>
+        <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">新增人工反馈通道和操作日志，系统从单向输出升级为可追溯闭环。</p>
+      </div>
+    </div>
+    <div class="card card-accent" style="display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start">
+      <span class="v-tag">v4</span>
+      <div>
+        <h4 class="h4">集成 SKILL 系统 — 输出扩展</h4>
+        <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">引入可插拔 SKILL 插件机制，首个落地：一条指令生成 PPT。</p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="7" data-total="10"></span></div>
+  <div class="notes">每次迭代来自真实使用暴露的问题，不是提前规划的——系统跑起来才知道自己需要什么。</div>
+</section>
+
+<!-- ⑧ 工作流 -->
+<section class="slide" data-title="工作流">
+  <p class="eyebrow">CURRENT STATE · 日常工作流</p>
+  <h2 class="h2 mt-s">四步工作流，<br>让知识<span class="gradient-text">持续生长</span></h2>
+  <div class="flow" style="margin-top:32px">
+    <div class="flow-node">
+      <span class="step-label">随时</span>
+      <h4>① 收集</h4>
+      <p>课堂内容、好文章、会议纪要——用 Obsidian Clipper 一键剪藏，或直接拖入 <code style="font-size:11px;background:var(--surface-2);padding:1px 5px;border-radius:3px">_inbox/</code>，无需整理。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node hi-node">
+      <span class="step-label">按需触发</span>
+      <h4>② 编译</h4>
+      <p>说「编译 inbox」，AI 自动提炼核心洞察，合并进 <code style="font-size:11px;background:var(--surface-2);padding:1px 5px;border-radius:3px">wiki/产品/</code> 或 <code style="font-size:11px;background:var(--surface-2);padding:1px 5px;border-radius:3px">wiki/学习与方法论/</code>，建立双向链接，原文归档至 <code style="font-size:11px;background:var(--surface-2);padding:1px 5px;border-radius:3px">_raw/</code>。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <span class="step-label">定期</span>
+      <h4>③ 维护审查</h4>
+      <p>说「健康检查」，AI 扫描死链、矛盾与过期内容；在 <code style="font-size:11px;background:var(--surface-2);padding:1px 5px;border-radius:3px">audit/</code> 提交反馈，AI 处理后存入 <code style="font-size:11px;background:var(--surface-2);padding:1px 5px;border-radius:3px">audit/resolved/</code>。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <span class="step-label">输出</span>
+      <h4>④ 综合与输出</h4>
+      <p>说「综合 [主题]」生成跨页分析；说「导出 PPT」一键生成幻灯片——<b>这份 PPT 就是这样生成的</b>。</p>
+    </div>
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="8" data-total="10"></span></div>
+  <div class="notes">最后一步是最好的 demo：这份 PPT 本身就是 my_wiki 生成的，不是从零写的。</div>
+</section>
+
+<!-- ⑨ 下一步 -->
+<section class="slide" data-title="下一步">
+  <p class="eyebrow">ROADMAP · my_wiki + Obsidian vs NotebookLM</p>
+  <h2 class="h2 mt-s">对标 NotebookLM，<br>我们<span class="gradient-text">已超越 · 还在追</span></h2>
+  <div class="grid g2 mt-l" style="align-items:stretch">
+    <div class="card" style="border-left:3px solid var(--good)">
+      <span class="status s-now">✓ 已实现</span>
+      <h4 class="h4">跨来源综合问答</h4>
+      <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">NotebookLM 知识库彼此孤立，无法跨库问答。my_wiki 以「综合 [主题]」指令跨全部 wiki 页面生成分析，猎头 × 营销风控跨项目串联已落地。</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--accent)">
+      <span class="status s-plan">计划中</span>
+      <h4 class="h4">Audio Overview 播客摘要</h4>
+      <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">NotebookLM 最受欢迎的功能：将资料自动生成两人对话式音频。计划以 SKILL 插件形式集成，对任意 wiki 主题生成音频摘要。</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--accent-2)">
+      <span class="status s-plan">计划中</span>
+      <h4 class="h4">结构化输出：学习指南 / FAQ / 时间线</h4>
+      <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">NotebookLM 一键生成学习指南、常见问题、时间线等固定格式。计划扩展「导出」指令，以 SKILL 插件支持多种结构化模板。</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--good)">
+      <span class="status s-now">✓ 已实现</span>
+      <h4 class="h4">Mind Map 知识图谱可视化</h4>
+      <p class="dim" style="font-size:14px;line-height:1.6;margin-top:6px">NotebookLM 的 Mind Map 为静态生成。Obsidian 图谱视图基于 wiki 双向链接实时渲染，节点随知识库增长自动扩展，可交互探索。</p>
+    </div>
+  </div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="9" data-total="10"></span></div>
+  <div class="notes">本地架构的优势：不受云端限制，功能可按需用 SKILL 插件扩展，数据完全自主。</div>
+</section>
+
+<!-- ⑩ 结语 -->
+<section class="slide center tc" data-title="结语">
+  <div class="mega">让知识自我生长</div>
+  <div class="deck-footer"><span></span><span class="slide-number" data-current="10" data-total="10"></span></div>
+  <div class="notes">结尾：这不是工具介绍——这是一套思维方式。知识应该连接，应该自我生长。</div>
+</section>
+
+</div>
+<script src="../../skills/html-ppt-skill/assets/runtime.js"></script>
+</body>
+</html>
